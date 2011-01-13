@@ -1,0 +1,5 @@
+if [[ -n "$rvm_environments_path" && -s "$rvm_environments_path/ruby-1.9.2-p136@sweetsuite" ]] ; then
+  \. "$rvm_environments_path/ruby-1.9.2-p136@sweetsuite"
+else
+  rvm --create  "ruby-1.9.2-p136@sweetsuite"
+fi
