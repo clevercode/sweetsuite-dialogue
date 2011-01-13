@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Dialogue::Application.load_tasks
+SweetSuite::Dialogue::Application.load_tasks
