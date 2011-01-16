@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.0.3'
 
-gem 'sweetsuite', :path => '../sweetsuite'
+gem 'sweetsuite', :path => '../sweetsuite-gem'
 
 gem 'compass'
 gem 'haml-rails'

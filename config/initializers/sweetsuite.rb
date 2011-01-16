@@ -1,7 +1,7 @@
 require 'yaml'
 
 begin
-  configuration = YAML.load_file(Rails.root.join('config','sweetsuite.yml')
+  configuration = YAML.load_file(Rails.root.join('config','sweetsuite.yml'))
   configuration = configuration[Rails.env]
   configuration = HashWithIndifferentAccess.new(configuration)
   SweetSuite.config.update(configuration)

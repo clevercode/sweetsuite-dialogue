@@ -1,5 +1,5 @@
 development:
-  auth_server: 'localhost:3001'
-  app_key: SOMEKEY
-  app_secret: SOMESECRET
+  auth_server: 'http://localhost:3001'
+  app_key: '20eb9f8d8f11134d67d03693f4c3ae8b'
+  app_secret: '410f139fadff2992892964af78acc5b0' 
   app_name: Dialogue
