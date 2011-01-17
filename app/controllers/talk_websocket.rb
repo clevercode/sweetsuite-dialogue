@@ -2,7 +2,9 @@ require 'cramp'
 
 Cramp::Websocket.backend = :thin
 
-class TalkController < Cramp::Websocket
+class TalkWebsocket < Cramp::Websocket
+
+  include SweetSuite::Helpers
 
   unloadable
 
@@ -26,11 +28,16 @@ class TalkController < Cramp::Websocket
 
   def listen(message)
     puts "heard: #{message}"
+
+    render MultiJson.encode({'current_user' => current_user})
   end
 
   def die
     puts "Nuuuuuuuu! I r ded."
   end
 
+  def session
+    ActiveSupport::HashWithIndifferentAccess.new(@env['action_dispatch.request.unsigned_session_cookie'])
+  end
 
 end
