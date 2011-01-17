@@ -1,2 +1,10 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+function connect() {
+
+  var socket = new WebSocket('ws://localhost:3000/talk')
+  socket.onopen = function() { console.log('opened!') }
+  socket.onclose = function() { console.log('closed!') }
+  socket.onmessage = function(msg) { console.log(msg) }
+  socket.onerror = function(err) { console.log('Error:' + err) }
+
+  return(socket)
+}
