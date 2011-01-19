@@ -4,6 +4,7 @@ gem 'rails', '~> 3.0.3'
 
 gem 'sweetsuite', :path => './../sweetsuite-gem'
 
+gem 'cramp', :git => 'git://github.com/lifo/cramp.git'
 gem 'compass'
 gem 'haml-rails'
 gem 'sqlite3-ruby', :require => 'sqlite3'
