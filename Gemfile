@@ -4,9 +4,11 @@ gem 'rails', '~> 3.0.3'
 
 gem 'sweetsuite', :path => './../sweetsuite-gem'
 
-gem 'cramp', :git => 'git://github.com/lifo/cramp.git'
+gem 'barista', '~> 1.0'
 gem 'compass'
+gem 'formtastic'
 gem 'haml-rails'
+gem 'rack', '1.2.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'thin'
 

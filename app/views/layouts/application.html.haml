@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %title Dialogue : SweetSuite
+    = stylesheet_link_tag :all
+    = javascript_include_tag 'jquery-min','rails', 'underscore-min', 'backbone-min', 'application'
+    = csrf_meta_tag
+  %body
+    .currentUser
+      Your Email:
+      = current_user['email']
+
+    =yield

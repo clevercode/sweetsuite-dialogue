@@ -1,6 +1,12 @@
 SweetSuite::Dialogue::Application.routes.draw do
-  match "/auth/sweetsuite/callback" => "sessions#create"
-  root :to => "home#index"
 
-  match "/talk" => TalkWebsocket
+  root :to => "rooms#index"
+
+  # SweetSuite authentication callback
+  match "/auth/sweetsuite/callback" => "sessions#create"
+
+
+  resources :rooms
+
 end
+

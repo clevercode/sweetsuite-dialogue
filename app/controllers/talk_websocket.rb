@@ -1,5 +1,4 @@
-require 'cramp'
-
+=begin
 Cramp::Websocket.backend = :thin
 
 class TalkWebsocket < Cramp::Websocket
@@ -41,3 +40,4 @@ class TalkWebsocket < Cramp::Websocket
   end
 
 end
+=end

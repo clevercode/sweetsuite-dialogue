@@ -1,0 +1,13 @@
+%hgroup
+  %h1
+    Room:
+    = @room.name
+  %h2
+    Topic:
+    = @room.topic
+%section#messages
+
+= form_for :message do |f|
+  = f.text_field :content
+  = f.submit 'Send'
+
