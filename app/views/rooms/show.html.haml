@@ -1,13 +1,18 @@
-%hgroup
+%hgroup.roomInfo
   %h1
-    Room:
     = @room.name
   %h2
-    Topic:
     = @room.topic
 %section#messages
+  - 30.times do 
+    %article.message
+      .user Andrew S.
+      .body
+        This is the message body, you think you are better than me?!
+        This is the message body, you think you are better than me?!
+        This is the message body, you think you are better than me?!
 
-= form_for :message do |f|
+= form_for :message, :html => {:id => 'new_message'} do |f|
   = f.text_field :content
   = f.submit 'Send'
 

@@ -2,12 +2,14 @@
 %html
   %head
     %title Dialogue : SweetSuite
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Cabin:bold', 'compiled/screen.css'
     = javascript_include_tag 'jquery-min','rails', 'underscore-min', 'backbone-min', 'application'
     = csrf_meta_tag
   %body
-    .currentUser
-      Your Email:
-      = current_user['email']
-
-    =yield
+    #omnibar
+      .brand Dialogue
+      .currentUser
+        = current_user.name
+        = "(#{current_user.email})"
+    #application
+      = yield

@@ -44,6 +44,7 @@ Dialogue.Channel
 
 Dialogue.Message
   - new(params) 
+  - asJson
   - ... 
 
 ### JS Internal Workings
@@ -117,5 +118,12 @@ Post a message
 
     Params: {raw_content: 'This is the message', annotations: {from: 'Dialogue'}}
 
+#### Taking Asynchronous-ness  into consideration
 
+One goal is to only need to maintain a single WebSocket connection to Larynx.
 
+I think that one simple solution, would to guarantee that the connection was
+open during bootstrap
+Larynx.connection(function(){
+  Larynx.send({apple:'b'})
+})
