@@ -1,18 +1,40 @@
-%hgroup.roomInfo
-  %h1
-    = @room.name
-  %h2
-    = @room.topic
-%section#messages
-  - 30.times do 
-    %article.message
-      .user Andrew S.
-      .body
-        This is the message body, you think you are better than me?!
-        This is the message body, you think you are better than me?!
-        This is the message body, you think you are better than me?!
+%section.roomList
+  %ul.sectionedListView
+    %li
+      %h1 Active Rooms
+      %ul
+        - @rooms.each do |room|
+          %li
+            = link_to_unless_current room, room do 
+              %span.selected= room
+    %li
+      %h1 Recent Rooms
+      %ul
+        %li= link_to 'Envy Room'
+        %li= link_to 'Sweet Chat'
+    %li
+      %h1 Smart Rooms
+      %ul
+        %li= link_to 'Recent Activity'
+        %li= link_to 'Github Notifications'
+  %ul.actionsListView
+    %li= link_to 'Create Room', new_room_path
 
-= form_for :message, :html => {:id => 'new_message'} do |f|
-  = f.text_field :content
-  = f.submit 'Send'
+%section.roomView
+  %hgroup.roomInfo
+    %h1
+      = @room.name
+    %h2
+      = @room.topic
+  %section.messagesListView
+    - 30.times do 
+      %article.messageView
+        .user Andrew S.
+        .body
+          This is the message body, you think you are better than me?!
+          This is the message body, you think you are better than me?!
+          This is the message body, you think you are better than me?!
 
+  = form_for :message, :html => {:class => 'newMessageView'} do |f|
+    = f.text_area :content, :size => '60x2', :resizable => 'no'
+    = f.submit 'Send'

@@ -2,15 +2,19 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.0.3'
 
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
 gem 'sweetsuite', :path => './../sweetsuite-gem'
 
 gem 'barista', '~> 1.0'
-gem 'compass'
+gem 'compass', '~> 0.11'
 gem 'formtastic'
+gem 'haml', '~> 3.1'
 gem 'haml-rails'
-gem 'rack', '1.2.1'
+gem 'sass', '~> 3.1'
+gem 'rack', '~> 1.2.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'thin'
+gem 'redis'
 
 
 group :development do
@@ -20,7 +24,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'steak'
 end
 
 group :test do
@@ -35,6 +38,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'fuubar'
   gem 'launchy'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
 
