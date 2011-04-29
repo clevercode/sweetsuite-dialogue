@@ -45,6 +45,13 @@ PATH
       thor
       warden
 
+PATH
+  remote: ./../sweetsuite-gem/jellybean
+  specs:
+    jellybean (0.0.1)
+      barista
+      compass (~> 0.11.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -263,6 +270,7 @@ DEPENDENCIES
   haml (~> 3.1)
   haml-rails
   heroku
+  jellybean!
   launchy
   omniauth!
   rack (~> 1.2.1)

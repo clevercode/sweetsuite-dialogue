@@ -4,6 +4,7 @@ gem 'rails', '~> 3.0.3'
 
 gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
 gem 'sweetsuite', :path => './../sweetsuite-gem'
+gem 'jellybean', :path => './../sweetsuite-gem/jellybean'
 
 gem 'barista', '~> 1.0'
 gem 'compass', '~> 0.11'
