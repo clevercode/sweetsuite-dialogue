@@ -1,8 +1,3 @@
-SweetSuite = 
-
-  Application:
-
-    boot: null
 # Larynx is a wrapper around WebSocket that handles sending and receiving JSON
 # serialized objects to and from the Larynx service 
 #
@@ -57,32 +52,24 @@ _(Larynx).extend(Backbone.Events)
 
 window.Larynx = Larynx
 
-class Dialogue
+Dialogue = {}
+class Dialogue.Application extends Jellybean.ViewController
 
+  selector: '#application'
 
-  class @Channel
+  initialize: () ->
+    roomListElement = $('.roomList .sectionedListView')[0]
+    @roomList = new Jellybean.NestedListViewController(roomListElement)
+    @roomList.bind('selection', (item) => 
+      console.log(item)
+    )
 
-    constructor: (id) -> 
-      null
-
-    join: () ->
-      null
-
-    leave: () ->
-      null
-
-  class @Message
-
-  class @User
-
-window.Dialogue = Dialogue
-
-class 
+# Export to global scope
+@['Dialogue'] = Dialogue
 
 jQuery ($)->
   
-  #  conversation = new Conversation(22)
-  # window.conversation = conversation
+  window.dialogue = new Dialogue.Application
 
   springTop = (y) ->
     scrollView.css({paddingTop: 0-y })
@@ -94,7 +81,7 @@ jQuery ($)->
   scrollView.bind 'mousewheel', (event) ->
     delta = event.wheelDelta/5
     newY = scrollView.scrollTop() + delta
-    console.log((if (delta < 0) then 'up' else 'down'), delta, newY)
+    #console.log((if (delta < 0) then 'up' else 'down'), delta, newY)
     scrollView.scrollTop(newY)
     ###
     if newY < 0
@@ -103,5 +90,7 @@ jQuery ($)->
       console.log('bounce')
     ###
     return false
+
+  
     
 

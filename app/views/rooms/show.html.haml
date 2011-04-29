@@ -6,7 +6,7 @@
         - @rooms.each do |room|
           %li
             = link_to_unless_current room, room do 
-              %span.selected= room
+              = link_to room, room, :class => 'selected'
     %li
       %h1 Recent Rooms
       %ul
@@ -27,13 +27,21 @@
     %h2
       = @room.topic
   %section.messagesListView
-    - 30.times do 
+    - time = Time.now
+    - 30.times do |n|
       %article.messageView
-        .user Andrew S.
+        .user 
+          = ['Andrew S.', 'Olivier L.', 'Zach N.'][n % 3]
         .body
-          This is the message body, you think you are better than me?!
-          This is the message body, you think you are better than me?!
-          This is the message body, you think you are better than me?!
+          - messages = []
+          - messages.push('This is a short message.')
+          - messages.push('This is the message body, you think you are better than me?! '*3)
+          = messages[n % 2]
+        %ul.meta
+          %li
+            %time= l(time + n.minutes, :format => :short)
+          %li= link_to 'Favorite' 
+          %li= link_to 'Hide'
 
   = form_for :message, :html => {:class => 'newMessageView'} do |f|
     = f.text_area :content, :size => '60x2', :resizable => 'no'

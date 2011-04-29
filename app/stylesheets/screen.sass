@@ -75,14 +75,9 @@ body
       background-color: #666
       color: #fff
       +single-text-shadow($half-black, 0, 1px, 1px)
+      font-weight: bold
       
-    &:active 
-      background-color: #1677E4
-  ul li span
-    display: block
-    font-size: 13px
-    padding: 0.4em 1.5em 
-    &.selected
+    &:active, &.selected
       color: white
       background-color: #1677E4
       +background(linear-gradient(darken(#72a9e8, 10%), darken(#61a2eb, 10%)))
@@ -128,13 +123,14 @@ body
     border-right: 1px solid #e0e0e0
     border-bottom: 1px solid #e0e0e0
     text-align: right
-    width: 12.5%
-    min-width: 60px
+    width: 60px
     display: table-cell
   .body
-    padding: 4px 10px 4px 5px
+    padding: 4px 20px 4px 10px
     border-bottom: 1px solid #eee
     display: table-cell
+  .meta
+    display: none
 
 .newMessageView
   padding: 0px 20px 0px 0px
