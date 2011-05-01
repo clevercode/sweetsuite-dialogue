@@ -37,6 +37,13 @@ GIT
       oa-openid (= 0.2.4)
 
 PATH
+  remote: ./../jellybean
+  specs:
+    jellybean (0.0.1)
+      barista
+      compass (~> 0.11.0)
+
+PATH
   remote: ./../sweetsuite-gem
   specs:
     sweetsuite (0.0.1)
@@ -44,13 +51,6 @@ PATH
       rails (~> 3.0.7)
       thor
       warden
-
-PATH
-  remote: ./../sweetsuite-gem/jellybean
-  specs:
-    jellybean (0.0.1)
-      barista
-      compass (~> 0.11.0)
 
 GEM
   remote: http://rubygems.org/

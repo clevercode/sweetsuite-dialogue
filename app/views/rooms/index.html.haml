@@ -1,20 +1,5 @@
-%section.roomList
-  %ul.sectionedListView
-    %li
-      %h1 Active Rooms
-      %ul
-        - @rooms.each do |room|
-          %li= link_to room, room
-    %li
-      %h1 Recent Rooms
-      %ul
-        %li= link_to 'Envy Room'
-        %li= link_to 'Sweet Chat'
-    %li
-      %h1 Smart Rooms
-      %ul
-        %li= link_to 'Recent Activity'
-        %li= link_to 'Github Notifications'
+%section.leftSplit
+  %ul#roomList
   %ul.actionsListView
     %li= link_to 'Create Room', new_room_path
 

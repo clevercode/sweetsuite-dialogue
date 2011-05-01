@@ -48,21 +48,89 @@ Larynx =
   _onerror: (error) ->
     this.trigger('disconnect', error)
 
-_(Larynx).extend(Backbone.Events)
+_(Larynx).extend(Jellybean.Events)
 
 window.Larynx = Larynx
 
 Dialogue = {}
-class Dialogue.Application extends Jellybean.ViewController
+class Dialogue.Application
 
   selector: '#application'
 
-  initialize: () ->
-    roomListElement = $('.roomList .sectionedListView')[0]
-    @roomList = new Jellybean.NestedListViewController(roomListElement)
-    @roomList.bind('selection', (item) => 
-      console.log(item)
+  constructor: () ->
+    roomListElement = $('#roomList')[0]
+    @roomList = new RoomListViewController(element: roomListElement)
+    @roomList.bind 'selection', (selection) => 
+      console.log(selection)
+      #@roomView.room = selection
+    
+
+class RoomListViewController extends Jellybean.TableViewController
+
+  tableStyle: 'JBGroupedTableStyle'
+
+  initialize: ->
+    Room.fetch().success =>
+      @data = Room.records
+      @view.render()
+
+  numberOfRows: ->
+    @data.length
+  
+  cellForRowAtIndex: (index) ->
+    cell = new Jellybean.SimpleCellView
+    cell.label = @data[index].name
+    cell.anchor = @data[index].getUrl()
+    cell
+
+  numberOfSections: ->
+    2
+
+  titleForSection: (index) ->
+    if index == 1 then 'Other Rooms' else 'Active Rooms'
+
+  numberOfRowsInSection: (index) ->
+    if index == 1 then 1 else 2
+
+  didSelectIndex: (index) ->
+    this.trigger('selection', @data[index])
+
+
+
+class RoomViewController
+  
+  # The room that this controller represents
+  room: null
+
+  # The TableView that contains the list of messages
+  messagesViewController: null
+
+  # The NewMessageFormView that is at the bottom
+  newMessageFormView: null
+
+  initialize: (options) ->
+    @room = options.room
+    @messagesViewController = new Jellybean.TableViewController(
+      cellStyle: MessageCellStyle
+      dataSource: @room.messages
     )
+
+
+Message = class Dialogue.Message extends Jellybean.Model
+  @setModelName('Message')
+  @setAttributes(['id', 'body', 'user_id'])
+
+Room = class Dialogue.Room extends Jellybean.Model
+  @setModelName('Room')
+  @setAttributes(['id', 'name', 'topic'])
+
+  @fetch: ->
+    $.getJSON('/rooms.json').success( (data) =>
+      @records = (Room.inst(obj['room']) for obj in data)
+    )
+
+  getUrl: ->
+    return "/rooms/#{@id}"
 
 # Export to global scope
 @['Dialogue'] = Dialogue

@@ -1,9 +1,11 @@
 class RoomsController < ApplicationController
 
   before_filter :authenticate_user!
+  respond_to :html, :json
 
   def index
     @rooms = Room.all
+    respond_with(@rooms)
   end
 
   def show
